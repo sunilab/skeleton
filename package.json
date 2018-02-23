@@ -1,0 +1,24 @@
+{
+  "name": "skeleton",
+  "version": "1.0.0",
+  "description": "Service that parses the sketch file into workable HTML and CSS for components.",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunilab/skeleton"
+  },
+  "author": "Sunil Abhyankar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sunilab/skeleton/issues"
+  },
+  "homepage": "https://github.com/sunilab/skeleton#readme"
+}

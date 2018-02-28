@@ -1,10 +1,12 @@
-// process the rectangle layer. The rectable will be laid out as a div element.
+/**
+ * Process the rectangle layer. The rectangle will be laid out as a div element.
+ */
+const BaseLayer = require('./layerBase');
 
-module.exports = function (rectangle, layer) {
-    console.log('rectangle, name:' + rectangle.name);
-    if (Array.isArray(rectangle.layers) === true) {
-        rectangle.layers.forEach(function (_layer) {
-            layer(_layer);
-        });
-    }
+module.exports = function (rectangle, processLayer, intermediateObject) {
+    var that = BaseLayer(rectangle, processLayer, intermediateObject);
+    that.getType = function () {
+        return 'rectangle';
+    };
+    that.render();
 };

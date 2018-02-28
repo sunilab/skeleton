@@ -1,10 +1,12 @@
-// process the Artboard layer. The artboard will be laid out as a div element.
+/**
+ * Process the Artboard layer. The artboard will be laid out as a div element.
+ */
+const BaseLayer = require('./layerBase');
 
-module.exports = function (artboard, layer) {
-    console.log('Artboard, name:' + artboard.name);
-    if (Array.isArray(artboard.layers) === true) {
-        artboard.layers.forEach(function (_layer) {
-            layer(_layer);
-        });
-    }
+module.exports = function (artboard, processLayer, intermidiateObject) {
+    var that = BaseLayer(artboard, processLayer, intermidiateObject);
+    that.getType = function () {
+        return 'artboard';
+    };
+    that.render();
 };

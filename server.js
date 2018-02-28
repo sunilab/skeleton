@@ -13,6 +13,9 @@ app.use(express.static('./static'));
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
+/**
+ * Web service that parses the sketch file and generates a React component.
+ */
 app.post('/upload', function (req, res) {
     var fileName = req.body.fileName;
     console.log('fileName = ' + fileName);
@@ -31,19 +34,18 @@ app.post('/upload', function (req, res) {
                 // load the page content
                 fs.readFile(pageFilePath, function (err, pageContent) {
                     if (err) { throw err };
+                    var intermidiateObject = [];
                     var page = JSON.parse(pageContent);
                     var layers = page.layers;
                     layers.forEach(function (_layer) {
                         // process the layer
-                        layer(_layer);
+                        layer(_layer, intermidiateObject);
                     });
-                    res.send(JSON.parse(pageContent));
+                    res.send(intermidiateObject);
                 });
             }
         });
-        // res.send(JSON.parse(data));
     });
-    // res.send(req.body);
 });
 
 app.listen(8000, () => { console.log('Running the dashboard on port 8000'); });
